@@ -1,0 +1,24 @@
+.InventionList {
+  text-align: center;
+}
+
+.InventionList-logo {
+  animation: InventionList-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.InventionList-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.InventionList-intro {
+  font-size: large;
+}
+
+@keyframes InventionList-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
