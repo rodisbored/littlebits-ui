@@ -35,7 +35,7 @@ class Form extends Component {
 
     return (
       <form>
-        <PageHeader>New Invention</PageHeader>
+        <InventionTitle/>
         <FieldGroup
           id="title"
           type="text"
@@ -98,6 +98,16 @@ function FormButtons(props) {
   }
   else {
     return <CommitButtons/>;
+  }
+}
+
+function InventionTitle(props) {
+  const inventionTitle = props.inventionTitle;
+  if (inventionTitle === undefined) {
+    return <PageHeader>New Invention</PageHeader>;
+  }
+  else {
+    return <PageHeader>{inventionTitle}</PageHeader>;
   }
 }
 

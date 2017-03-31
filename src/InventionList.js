@@ -11,8 +11,8 @@ class InventionList extends Component {
   render() {
     return (
       <div>
+        <PageHeader>Invention List</PageHeader>
         <Col xs={12} md={8}>
-          <PageHeader>Invention List</PageHeader>
           <Table responsive>
             <thead>
             <tr>
@@ -35,7 +35,7 @@ class InventionList extends Component {
             </tbody>
           </Table>
 
-          <div class="six columns">
+          <div>
             <Button bsStyle="primary">Create New Invention</Button>
           </div>
         </Col>

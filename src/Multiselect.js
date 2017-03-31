@@ -15,7 +15,7 @@ var Multiselect = React.createClass({
   propTypes: {
     label: React.PropTypes.string,
     placeholder: React.PropTypes.string,
-    disabled: React.PropTypes.string
+    disabled: React.PropTypes.bool
   },
   getInitialState () {
     return {
