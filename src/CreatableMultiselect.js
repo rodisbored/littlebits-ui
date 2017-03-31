@@ -14,7 +14,8 @@ var Multiselect = React.createClass({
   displayName: 'Multiselect',
   propTypes: {
     label: React.PropTypes.string,
-    placeholder: React.PropTypes.string
+    placeholder: React.PropTypes.string,
+    disabled: React.PropTypes.string
   },
   getInitialState () {
     return {
@@ -31,7 +32,7 @@ var Multiselect = React.createClass({
     return (
       <div className="section">
         <h3 className="section-heading">{this.props.label}</h3>
-        <Creatable multi simpleValue value={this.state.value} placeholder={this.state.placeholder} options={this.state.options} onChange={this.handleSelectChange} />
+        <Creatable multi simpleValue value={this.state.value} disabled={this.props.disabled} placeholder={this.state.placeholder} options={this.state.options} onChange={this.handleSelectChange} />
       </div>
     );
   }
