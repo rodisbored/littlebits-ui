@@ -3,14 +3,15 @@ import { Creatable } from 'react-select';
 
 import _ from 'lodash';
 
-const FLAVOURS = [
-  { label: 'Chocolate', value: 'chocolate' },
-  { label: 'Vanilla', value: 'vanilla' },
-  { label: 'Strawberry', value: 'strawberry' },
-  { label: 'Caramel', value: 'caramel' },
-  { label: 'Cookies and Cream', value: 'cookiescream' },
-  { label: 'Peppermint', value: 'peppermint' },
-];
+function shouldKeyDownEventCreateNewOption ({ keyCode }) {
+  switch (keyCode) {
+    case 9:   // TAB
+    case 188: // COMMA
+      return true;
+  }
+
+  return false;
+};
 
 var Multiselect = React.createClass({
   displayName: 'Multiselect',
@@ -25,7 +26,7 @@ var Multiselect = React.createClass({
     return {
       disabled: false,
       crazy: false,
-      options: FLAVOURS,
+      options: [],
       value: [],
     };
   },

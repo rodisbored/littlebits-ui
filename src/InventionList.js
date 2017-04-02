@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Request from 'superagent';
 import _ from 'lodash';
-// import logo from './logo.svg';
 import './InventionList.css';
 
 import Table from 'react-bootstrap/lib/Table';
@@ -12,8 +11,8 @@ import Col from 'react-bootstrap/lib/Col';
 import InventionRow from './components/InventionRow'
 
 class InventionList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -30,9 +29,6 @@ class InventionList extends Component {
     var inventions = _.map(this.state.inventions, (invention) => {
       return <InventionRow
                 key={invention.id}
-                title={invention.title}
-                description={invention.description}
-                username={invention.username}
                 invention={invention}
               />
     });
