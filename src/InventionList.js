@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Request from 'superagent';
+import _ from 'lodash';
 // import logo from './logo.svg';
 import './InventionList.css';
 
@@ -7,36 +9,53 @@ import Button from 'react-bootstrap/lib/Button';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import Col from 'react-bootstrap/lib/Col';
 
+import InventionRow from './components/InventionRow'
+
 class InventionList extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  componentWillMount() {
+    var url = "http://localhost:3000/inventions/";
+    Request.get(url).then((response) => {
+      this.setState({
+        inventions: response.body
+      })
+    });
+  }
+
   render() {
+    var inventions = _.map(this.state.inventions, (invention) => {
+      return <InventionRow
+                key={invention.id}
+                title={invention.title}
+                description={invention.description}
+                username={invention.username}
+                invention={invention}
+              />
+    });
     return (
       <div>
         <PageHeader>Invention List</PageHeader>
         <Col xs={12} md={8}>
           <Table responsive>
             <thead>
-            <tr>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Username</th>
-            </tr>
+            { this.state.inventions !== [] &&
+              <tr key="heading">
+                <th>Title</th>
+                <th>Description</th>
+                <th>Username</th>
+              </tr>
+            }
             </thead>
             <tbody>
-            <tr>
-              <td>Dave Gamache</td>
-              <td>26</td>
-              <td>Male</td>
-            </tr>
-            <tr>
-              <td>Dwayne Johnson</td>
-              <td>42</td>
-              <td>Male</td>
-            </tr>
+            { inventions }
             </tbody>
           </Table>
-
           <div>
-            <Button bsStyle="primary">Create New Invention</Button>
+            <Button bsStyle="primary" href="/inventions/new">Create New Invention</Button>
           </div>
         </Col>
       </div>
