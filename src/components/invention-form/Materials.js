@@ -35,6 +35,10 @@ class Materials extends Component {
     });
   }
 
+  handleSelectChange (value) {
+    this.setState({ value });
+  }
+
   render() {
     return (
       <Col xs={12} md={8}>

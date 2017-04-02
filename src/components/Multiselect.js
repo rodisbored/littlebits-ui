@@ -18,6 +18,9 @@ var Multiselect = React.createClass({
       value: this.props.values
     };
   },
+  componentWillReceiveProps (nextProps) {
+    this.setState({ value: nextProps.values });
+  },
   handleSelectChange (value) {
     this.setState({ value });
   },
@@ -28,7 +31,7 @@ var Multiselect = React.createClass({
         <Select
           multi
           simpleValue
-          value={this.state.value || this.props.values}
+          value={this.state.value}
           disabled={this.props.disabled}
           placeholder={this.props.placeholder}
           options={this.props.options}

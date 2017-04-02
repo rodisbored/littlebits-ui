@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Creatable } from 'react-select';
 
 function shouldKeyDownEventCreateNewOption ({ keyCode }) {
@@ -28,9 +28,8 @@ var CreatableMultiselect = React.createClass({
       value: []
     };
   },
-  componentDidMount () {
-    console.log(this)
-    this.setState({ value: this.props.values });
+  componentWillReceiveProps (nextProps) {
+    this.setState({ value: nextProps.values });
   },
   handleSelectChange (value) {
     this.setState({ value });

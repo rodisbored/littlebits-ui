@@ -38,10 +38,10 @@ class InventionEdit extends Component {
     return (
       <form>
         <Heading title={invention && invention.title} />
-        <Title defaultValue={invention && invention.title} />
-        <Description defaultValue={invention} />
-        <Username defaultValue={invention} />
-        <Email defaultValue={invention} />
+        <Title value={invention && invention.title} />
+        <Description value={invention && invention.description} />
+        <Username value={invention && invention.username} />
+        <Email value={invention && invention.email} />
         <Bits values={invention && FormatOptions(invention.bits)}/>
         <Materials values={invention && FormatOptions(invention.materials)}/>
         <Col xs={12} md={8}>
