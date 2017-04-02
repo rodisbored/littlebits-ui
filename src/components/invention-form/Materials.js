@@ -12,11 +12,11 @@ import CreatableMultiselect from './../CreatableMultiselect';
 
 function GetMaterialOptions(materials) {
   return (
-    _.map(materials, (material) => {
+    _.orderBy(_.map(materials, (material) => {
       return (
         { label: material.name, value: material.name }
       )
-    })
+    }), ['label'])
   )
 }
 
@@ -41,6 +41,7 @@ class Materials extends Component {
         <FormGroup>
           <ControlLabel>Materials (optional)</ControlLabel>
           <CreatableMultiselect
+            values={this.props.values}
             disabled={this.props.disabled}
             options={GetMaterialOptions(this.state.materials)}
           />

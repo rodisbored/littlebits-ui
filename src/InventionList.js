@@ -27,10 +27,7 @@ class InventionList extends Component {
 
   render() {
     var inventions = _.map(this.state.inventions, (invention) => {
-      return <InventionRow
-                key={invention.id}
-                invention={invention}
-              />
+      return <InventionRow key={invention.id} invention={invention} />
     });
     return (
       <div>

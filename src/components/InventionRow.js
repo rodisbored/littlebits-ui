@@ -10,7 +10,7 @@ class InventionRow extends React.Component {
   }
 
   handleClick() {
-    this.props.history.push('/inventions/' + this.props.invention.id);
+    this.props.history.push(`/inventions/${this.props.invention.id}`);
   }
 
   render() {

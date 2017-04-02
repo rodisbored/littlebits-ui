@@ -39,7 +39,7 @@ var Multiselect = React.createClass({
         <h3 className="section-heading">{this.props.label}</h3>
         <Creatable multi
           simpleValue
-          value={this.state.value}
+          value={this.props.values || this.state.value}
           disabled={this.props.disabled}
           placeholder={this.state.placeholder}
           options={this.props.options}

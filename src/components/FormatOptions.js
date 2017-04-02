@@ -3,11 +3,11 @@ import _ from 'lodash';
 
 function FormatOptions(options) {
   return (
-    _.map(options, (option) => {
+    _.orderBy(_.map(options, (option) => {
       return (
         { label: option, value: option }
       )
-    })
+    }), ['label'])
   )
 }
 

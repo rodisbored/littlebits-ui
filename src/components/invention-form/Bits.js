@@ -13,11 +13,11 @@ import FormatOptions from './../FormatOptions';
 
 function GetBitOids(bits) {
   return (
-    _.map(bits, (bit) => {
+    _.orderBy(_.map(bits, (bit) => {
       return (
         { label: bit.oid, value: bit.oid }
       )
-    })
+    }), ['label'])
   )
 }
 

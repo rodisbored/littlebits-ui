@@ -22,7 +22,7 @@ class InventionEdit extends Component {
   }
 
   componentWillMount() {
-    var url = "http://localhost:3000/inventions/" + this.props.match.params.id;
+    var url = `http://localhost:3000/inventions/${this.props.match.params.id}`;
     Request.get(url).then((response) => {
       this.setState({
         invention: response.body
@@ -46,7 +46,7 @@ class InventionEdit extends Component {
           <InventionButtons
             submitId="submit"
             submitText="Submit"
-            cancelLink={"/inventions/" + this.props.match.params.id}
+            cancelLink={`/inventions/${this.props.match.params.id}`}
           />
         </Col>
       </form>

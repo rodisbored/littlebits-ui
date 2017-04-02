@@ -23,8 +23,8 @@ class InventionShow extends Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    var url = "http://localhost:3000/" + this.props.location.pathname;
+  componentDidMount() {
+    var url = `http://localhost:3000/inventions/${this.props.match.params.id}`;
     Request.get(url).then((response) => {
       this.setState({
         invention: response.body
@@ -43,13 +43,12 @@ class InventionShow extends Component {
         <Username disabled={disabled} value={invention && invention.username} />
         <Email disabled={disabled} value={invention && invention.email} />
         <Bits disabled={disabled} values={invention && FormatOptions(invention.bits)} />
-        <Materials disabled={disabled} values={invention && invention.materials} />
+        <Materials disabled={disabled} values={invention && FormatOptions(invention.materials)} />
         <Col xs={12} md={8}>
           <InventionButtons
-            invention={invention}
             submitId="edit"
             submitText="Edit"
-            submitLink={this.props.location.pathname + "/edit"}
+            submitLink={`${this.props.location.pathname}/edit`}
             cancelLink="/inventions"
           />
         </Col>
