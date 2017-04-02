@@ -28,7 +28,7 @@ var Multiselect = React.createClass({
         <Select
           multi
           simpleValue
-          value={this.props.values || this.state.value}
+          value={this.state.value || this.props.values}
           disabled={this.props.disabled}
           placeholder={this.props.placeholder}
           options={this.props.options}

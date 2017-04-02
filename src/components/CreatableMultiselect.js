@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Creatable } from 'react-select';
 
 function shouldKeyDownEventCreateNewOption ({ keyCode }) {
@@ -11,8 +11,8 @@ function shouldKeyDownEventCreateNewOption ({ keyCode }) {
   return false;
 };
 
-var Multiselect = React.createClass({
-  displayName: 'Multiselect',
+var CreatableMultiselect = React.createClass({
+  displayName: 'CreatableMultiselect',
   propTypes: {
     label: React.PropTypes.string,
     placeholder: React.PropTypes.string,
@@ -25,8 +25,12 @@ var Multiselect = React.createClass({
       disabled: false,
       crazy: false,
       options: [],
-      value: [],
+      value: []
     };
+  },
+  componentDidMount () {
+    console.log(this)
+    this.setState({ value: this.props.values });
   },
   handleSelectChange (value) {
     this.setState({ value });
@@ -37,7 +41,7 @@ var Multiselect = React.createClass({
         <h3 className="section-heading">{this.props.label}</h3>
         <Creatable multi
           simpleValue
-          value={this.props.values || this.state.value}
+          value={this.state.value}
           disabled={this.props.disabled}
           placeholder={this.state.placeholder}
           options={this.props.options}
@@ -49,4 +53,4 @@ var Multiselect = React.createClass({
   }
 });
 
-module.exports = Multiselect;
+module.exports = CreatableMultiselect;

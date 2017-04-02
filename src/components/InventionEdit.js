@@ -15,6 +15,8 @@ import Email from './invention-form/Email';
 import Bits from './invention-form/Bits';
 import Materials from './invention-form/Materials';
 
+import FormatOptions from './FormatOptions';
+
 class InventionEdit extends Component {
   constructor() {
     super();
@@ -40,8 +42,8 @@ class InventionEdit extends Component {
         <Description defaultValue={invention} />
         <Username defaultValue={invention} />
         <Email defaultValue={invention} />
-        <Bits />
-        <Materials />
+        <Bits values={invention && FormatOptions(invention.bits)}/>
+        <Materials values={invention && FormatOptions(invention.materials)}/>
         <Col xs={12} md={8}>
           <InventionButtons
             submitId="submit"
