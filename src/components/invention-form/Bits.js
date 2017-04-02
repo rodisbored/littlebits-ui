@@ -9,7 +9,6 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import _ from 'lodash';
 
 import Multiselect from './../Multiselect';
-import FormatOptions from './../FormatOptions';
 
 function GetBitOids(bits) {
   return (

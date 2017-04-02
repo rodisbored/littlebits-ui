@@ -1,8 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
 
-import FormatOptions from './FormatOptions';
-
 var Multiselect = React.createClass({
   displayName: 'Multiselect',
   propTypes: {

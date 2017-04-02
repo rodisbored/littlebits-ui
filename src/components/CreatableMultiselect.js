@@ -1,15 +1,13 @@
 import React from 'react';
 import { Creatable } from 'react-select';
 
-import _ from 'lodash';
-
 function shouldKeyDownEventCreateNewOption ({ keyCode }) {
   switch (keyCode) {
-    case 9:   // TAB
+    case 13: // ENTER
+    case 32: // SPACE
     case 188: // COMMA
       return true;
   }
-
   return false;
 };
 
@@ -44,6 +42,7 @@ var Multiselect = React.createClass({
           placeholder={this.state.placeholder}
           options={this.props.options}
           onChange={this.handleSelectChange}
+          shouldKeyDownEventCreateNewOption={shouldKeyDownEventCreateNewOption}
         />
       </div>
     );
