@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Request from 'superagent';
 
+import _ from 'lodash';
+
 import Col from 'react-bootstrap/lib/Col';
 
 import 'react-select/dist/react-select.css';
@@ -17,24 +19,44 @@ import Materials from './invention-form/Materials';
 
 import FormatOptions from './FormatOptions';
 
-const postInvention = (inventionCreate) => {
+const UpdateInvention = (inventionUpdate) => {
+  var materials, bits;
+  if (Object.prototype.toString.call(inventionUpdate.materials.materials.materials.props.value) === '[object Array]') {
+    materials = _.map(inventionUpdate.materials.materials.materials.props.value, (value) => {
+      return value.value
+    })
+  }
+  else {
+    materials = inventionUpdate.materials.materials.materials.props.value && inventionUpdate.materials.materials.materials.props.value.split(",")
+  }
+
+  if (Object.prototype.toString.call(inventionUpdate.bits.bits.bits.props.value) === '[object Array]') {
+    bits = _.map(inventionUpdate.bits.bits.bits.props.value, (value) => {
+      return value.value
+    })
+  }
+  else {
+    bits = inventionUpdate.bits.bits.bits.props.value && inventionUpdate.bits.bits.bits.props.value.split(",")
+  }
+
   Request
-    .put(`http://localhost:3000/inventions/${this.props.match.params.id}`)
+    .put(`http://localhost:3000/inventions/${inventionUpdate.props.match.params.id}`)
     .send({
-      title: inventionCreate.title.title.props.value,
-      description: inventionCreate.description.description.props.value,
-      bits: inventionCreate.bits.bits.bits.props.value.split(","),
-      username: inventionCreate.username.username.props.value,
-      email: inventionCreate.email.email.props.value,
-      materials: inventionCreate.materials.materials.materials.props.value.split(",")
+      title: inventionUpdate.title.title.props.value,
+      description: inventionUpdate.description.description.props.value,
+      bits: bits,
+      username: inventionUpdate.username.username.props.value,
+      email: inventionUpdate.email.email.props.value,
+      materials: materials
     })
     .type('json')
     .accept('json')
     .end(function(err, res){
      if (err || !res.ok) {
-       alert('Oh no! error');
+       alert('This is super super ugly but: ' + JSON.stringify(res.body));
      } else {
-       alert('yay got ' + JSON.stringify(res.body));
+       alert('Invention updated successfully');
+       inventionUpdate.context.router.history.push(`/inventions/${inventionUpdate.props.match.params.id}`);
      }
    });
 }
@@ -58,7 +80,7 @@ class InventionEdit extends Component {
 
   submitHandler (event) {
     event.preventDefault();
-    postInvention(this);
+    UpdateInvention(this);
   }
 
   render() {
@@ -83,6 +105,10 @@ class InventionEdit extends Component {
       </form>
     );
   };
+}
+
+InventionEdit.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default InventionEdit;

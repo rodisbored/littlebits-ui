@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Request from 'superagent';
 
+import _ from 'lodash';
+
 import Col from 'react-bootstrap/lib/Col';
 
 import 'react-select/dist/react-select.css';
@@ -15,24 +17,25 @@ import Email from './invention-form/Email';
 import Bits from './invention-form/Bits';
 import Materials from './invention-form/Materials';
 
-const postInvention = (inventionCreate) => {
+const PostInvention = (inventionCreate) => {
   Request
     .post('http://localhost:3000/inventions')
     .send({
       title: inventionCreate.title.title.props.value,
       description: inventionCreate.description.description.props.value,
-      bits: inventionCreate.bits.bits.bits.props.value.split(","),
+      bits: inventionCreate.bits.bits.bits.props.value && inventionCreate.bits.bits.bits.props.value.split(","),
       username: inventionCreate.username.username.props.value,
       email: inventionCreate.email.email.props.value,
-      materials: inventionCreate.materials.materials.materials.props.value.split(",")
+      materials: inventionCreate.materials.materials.materials.props.value && inventionCreate.materials.materials.materials.props.value.split(",")
     })
     .type('json')
     .accept('json')
     .end(function(err, res){
      if (err || !res.ok) {
-       alert('Oh no! error');
+       alert('This is super super ugly but: ' + JSON.stringify(res.body));
      } else {
-       alert('yay got ' + JSON.stringify(res.body));
+       alert('Invention created successfully');
+       inventionCreate.context.router.history.push("/inventions/");
      }
    });
 }
@@ -47,7 +50,7 @@ class InventionCreate extends Component {
 
   submitHandler (event) {
     event.preventDefault();
-    postInvention(this);
+    PostInvention(this);
   }
 
   render() {
@@ -66,13 +69,13 @@ class InventionCreate extends Component {
             submitText="Create"
             cancelLink="/inventions" />
         </Col>
-        <div>
-          { postInvention }
-        </div>
-
       </form>
     );
   };
+}
+
+InventionCreate.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default InventionCreate;
