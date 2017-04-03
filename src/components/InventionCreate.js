@@ -49,7 +49,7 @@ class InventionCreate extends Component {
     event.preventDefault();
     postInvention(this);
   }
-``
+
   render() {
     return (
       <form onSubmit={this.submitHandler}>
