@@ -24,6 +24,7 @@ class Username extends Component {
       <FieldGroup
         id="username"
         type="text"
+        inputRef={ (input) => { this.username = input }}
         label="User Name (optional)"
         disabled={this.props.disabled}
         value={this.state.value || ''}

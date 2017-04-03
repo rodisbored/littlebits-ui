@@ -40,6 +40,7 @@ var CreatableMultiselect = React.createClass({
         <h3 className="section-heading">{this.props.label}</h3>
         <Creatable multi
           simpleValue
+          ref={ (input) => { this.materials = input }}
           value={this.state.value}
           disabled={this.props.disabled}
           placeholder={this.state.placeholder}

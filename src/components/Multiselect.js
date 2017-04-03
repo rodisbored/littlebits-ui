@@ -31,6 +31,7 @@ var Multiselect = React.createClass({
         <Select
           multi
           simpleValue
+          ref={ (input) => { this.bits = input }}
           value={this.state.value}
           disabled={this.props.disabled}
           placeholder={this.props.placeholder}

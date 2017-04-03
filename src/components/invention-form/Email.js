@@ -22,6 +22,7 @@ class Email extends Component {
       <FieldGroup
         id="email"
         type="email"
+        inputRef={ (input) => { this.email = input }}
         label="Email Address (optional)"
         disabled={this.props.disabled}
         value={this.state.value || ''}

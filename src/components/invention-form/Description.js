@@ -28,6 +28,7 @@ class Description extends Component {
         <FormGroup controlId="description">
           <ControlLabel>Description</ControlLabel>
           <FormControl
+            ref={ (input) => { this.description = input }}
             componentClass="textarea"
             type="text"
             placeholder="Description of your invention!"

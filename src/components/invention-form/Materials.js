@@ -45,6 +45,7 @@ class Materials extends Component {
         <FormGroup>
           <ControlLabel>Materials (optional)</ControlLabel>
           <CreatableMultiselect
+            ref={ (input) => { this.materials = input }}
             values={this.props.values}
             disabled={this.props.disabled}
             options={GetMaterialOptions(this.state.materials)}

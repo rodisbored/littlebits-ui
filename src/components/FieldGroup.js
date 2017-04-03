@@ -4,12 +4,12 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 
-const FieldGroup = ({ id, label, ...props }) => {
+const FieldGroup = ({ id, label, inputRef, ...props }) => {
   return (
     <Col xs={12} md={8}>
       <FormGroup controlId={id}>
         <ControlLabel>{label}</ControlLabel>
-        <FormControl {...props} />
+        <FormControl ref={inputRef} {...props} />
       </FormGroup>
     </Col>
   );

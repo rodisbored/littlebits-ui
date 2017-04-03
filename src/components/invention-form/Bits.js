@@ -41,6 +41,7 @@ class Bits extends Component {
         <FormGroup>
           <ControlLabel>Bits</ControlLabel>
           <Multiselect
+            ref={ (input) => { this.bits = input }}
             values={this.props.values}
             placeholder="Select at least one Bit"
             disabled={this.props.disabled}

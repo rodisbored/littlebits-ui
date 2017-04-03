@@ -25,6 +25,8 @@ class Title extends Component {
         id="title"
         type="text"
         label="Title"
+        inputRef={ (input) => { this.title = input }}
+        componentClass="input"
         placeholder="Brief Title"
         disabled={this.props.disabled}
         value={this.state.value || ''}

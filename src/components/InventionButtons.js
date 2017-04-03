@@ -9,6 +9,7 @@ class InventionButtons extends React.Component {
       <FormGroup>
         <Button bsStyle="primary"
           id={this.props.submitId}
+          type='submit'
           href={this.props.submitLink}>
           {this.props.submitText}
         </Button>
